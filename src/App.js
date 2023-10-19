@@ -1,6 +1,6 @@
 import React from 'react';
-import Navbar from "D:/labs/reac/src/components/navbar"
-import AppRouter from "D:/labs/reac/src/components/AppRouter"
+import Navbar from "../components/navbar"
+import AppRouter from "../components/AppRouter"
 import { BrowserRouter } from 'react-router-dom';
 import { AuthContext } from './context';
 import {useState} from 'react';
