@@ -5,7 +5,7 @@ import { AuthContext } from '../context/index.js';
 import { useContext } from 'react';
 
 const AppRouter = () => {
-    const {isAuth, setIsAuth} = useContext(AuthContext);
+    const {isAuth} = useContext(AuthContext);
 
     return (
         isAuth
@@ -18,9 +18,7 @@ const AppRouter = () => {
      key={route.path}
      />
 )}
-        
-        
-                <Route path="/" element={<Navigate replace to="/users" />} />
+                <Route path="/" element={<Navigate to="/users" />} />
                 </Routes>
         
         :
