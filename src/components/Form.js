@@ -1,18 +1,6 @@
 import React, {Component} from 'react';
-
+import dataUsers from "./redux/reducers/dataUsers.reducer"
 class Form extends Component {
-    constructor(props) {
-        super(props);
-        
-        this.initialState = {
-            id: 1,
-            firstName: '',
-            lastName: '',
-            email: ''
-        };
-
-        this.state = this.initialState;
-    }
 
     handleChange = event => {
         const { name, value } = event.target;
