@@ -12,7 +12,7 @@ import {
     };
   
   
-  export default function dataUsers(state = initialState, action) {
+  export default function dataUsersReducer(state = initialState, action) {
     switch (action.type) {
       case ADD_USER:
         return    [

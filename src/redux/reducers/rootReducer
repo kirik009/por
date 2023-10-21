@@ -1,10 +1,30 @@
 import { combineReducers } from 'redux'
-import dataUsers from './todos'
-import users from './visibilityFilter'
+import dataUsersReducer from './todos'
+import usersReducer from './visibilityFilter'
 
-const rootReducer = combineReducers({
-  dataUsers,
-  users
-})
+const rootReducer = () => combineReducers({
+   dataUsers: dataUsersReducer,
+   users: usersReducer,
+});
 
-export default rootReducer
+
+// const createRootReducer = (history) => {
+//   return combineReducers({
+//     router: connectRouter(history),
+//     createUser: signupReducer,
+//   });
+// };
+
+// const createRootReducer = (history) => combineReducers({
+//   router: connectRouter(history),
+//   createUser: signupReducer,
+// });
+
+// const createRootReducer = (history) => {
+//   combineReducers({
+//     router: connectRouter(history),
+//     createUser: signupReducer,
+//   });
+// };
+
+ export default rootReducer;

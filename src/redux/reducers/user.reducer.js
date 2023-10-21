@@ -7,7 +7,7 @@ login:'',
 password:'' 
 };
 
-export default function users(state = iState, action) {
+export default function usersReducer(state = iState, action) {
     // if (action.type === userActionTypes.LOGIN_SUCCESS) {
     //     return {
     //     loggedIn: action.payload.isLoggedIn,

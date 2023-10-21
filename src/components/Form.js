@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import dataUsers from "./redux/reducers/dataUsers.reducer"
+import dataUsers from "../redux/reducers/dataUsers.reducer"
 class Form extends Component {
 
     handleChange = event => {
