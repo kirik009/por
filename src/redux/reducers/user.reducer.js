@@ -4,7 +4,8 @@ import {
   } from '../constants/ActionTypes'
 const iState = {
 login:'',
-password:'' 
+password:'',
+isAuth: false
 };
 
 export default function usersReducer(state = iState, action) {
@@ -20,7 +21,8 @@ export default function usersReducer(state = iState, action) {
                 ...state,
                 {
                  login: action.login,
-                  pass: action.pass
+                  pass: action.pass,
+                  isAuth:true
                 }
               ]
         
@@ -29,7 +31,8 @@ export default function usersReducer(state = iState, action) {
                 ...state,
                 {
                  login: action.login,
-                  pass: action.pass
+                  pass: action.pass,
+                  isAuth: true
                 }
               ]
           default:

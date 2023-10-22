@@ -9,3 +9,11 @@
 //    };
 // };
 // export default connect(mapStateToProps, mapDispatchToProps)(Counter);
+function mapStateToProps (state) {
+    return {
+      user: state.user,
+      page: state.page
+    }
+  }
+  
+  export default connect(mapStateToProps)(App)

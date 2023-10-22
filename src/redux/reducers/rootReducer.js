@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux'
-import dataUsersReducer from './todos'
-import usersReducer from './visibilityFilter'
+import dataUsersReducer from '../reducers/dataUsers.reducer'
+import usersReducer from '../reducers/user.reducer'
 
 const rootReducer = () => combineReducers({
    dataUsers: dataUsersReducer,

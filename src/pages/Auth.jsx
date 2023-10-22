@@ -2,10 +2,13 @@ import React , { useContext } from 'react'
 import MyButton from "../components/button/MyButton"
 import {Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/index.js';
+import { useActions } from '../useActions';
+import { useSelector } from 'react-redux';
 
 const Auth = () => {
     const {isAuth, setIsAuth} = useContext(AuthContext)
-
+    const{} = useSelector((store) => {store.login,store.pass})
+    const {loginUser} = useActions()
     const navigate = useNavigate();
     const auth = event => {
         event.preventDefault();
