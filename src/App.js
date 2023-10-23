@@ -1,13 +1,13 @@
 import React from 'react';
 import Navbar from './components/navbar'
 import AppRouter from './components/AppRouter'
-import { createStore } from 'redux'
+import {Provider } from 'react-redux'
 import { BrowserRouter } from 'react-router-dom';
 import { AuthContext } from './context';
 import {useState} from 'react';
-import rootReducer from './redux/reducers/rootReducer';
+import {store} from './redux/store'
 function App() {
-    const store = createStore(rootReducer)
+
     const [isAuth, setIsAuth] = useState(false);
     return (
         <Provider store={store}>

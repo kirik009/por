@@ -3,8 +3,8 @@ import {
     REG_USER,
   } from '../constants/ActionTypes'
 const iState = {
-login:'',
-password:'',
+  login:'',
+  password:'',
 isAuth: false
 };
 

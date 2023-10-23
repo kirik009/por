@@ -3,16 +3,19 @@ import MyButton from "../components/button/MyButton"
 import {Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/index.js';
 import { useActions } from '../useActions';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 const Auth = () => {
-    const {isAuth, setIsAuth} = useContext(AuthContext)
-    const{} = useSelector((store) => {store.login,store.pass})
+const dispatch = useDispatch()
+   // const {isAuth, setIsAuth} = useContext(AuthContext)
+    let {login, password, isAuth} = useSelector(state => state.userss || {})
     const {loginUser} = useActions()
     const navigate = useNavigate();
     const auth = event => {
         event.preventDefault();
-        setIsAuth(true);
+        isAuth = true;
+        dispatch(loginUser('adm', '123',true))
+        //loginUser
         navigate('/users')
     }
 

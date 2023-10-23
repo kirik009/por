@@ -4,7 +4,7 @@ import usersReducer from '../reducers/user.reducer'
 
 const rootReducer = () => combineReducers({
    dataUsers: dataUsersReducer,
-   users: usersReducer,
+   userss: usersReducer,
 });
 
 

@@ -7,6 +7,7 @@ const Navbar = () => {
     return (
         
 <div className='navbar'>
+    
             <div className='navbar_links'>
                 <Link to='/users'>Пользователи</Link>
                 <Link to='/auth' onClick={() => setIsAuth(false)}>Войти</Link>
