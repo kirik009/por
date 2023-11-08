@@ -1,11 +1,15 @@
-import { combineReducers } from 'redux'
+import { combineReducers, configureStore} from '@reduxjs/toolkit'
 import dataUsersReducer from '../reducers/dataUsers.reducer'
 import usersReducer from '../reducers/user.reducer'
+import userSlice from '../slices/userSlice'
 
-const rootReducer = () => combineReducers({
-   dataUsers: dataUsersReducer,
-   userss: usersReducer,
-});
+ const rootReducer = combineReducers({
+   userss: userSlice
+})
+
+export const store = configureStore( {
+   reducer:rootReducer,
+})
 
 
 // const createRootReducer = (history) => {
@@ -27,4 +31,4 @@ const rootReducer = () => combineReducers({
 //   });
 // };
 
- export default rootReducer;
+ //export default rootReducer;

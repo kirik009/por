@@ -19,9 +19,9 @@ import {
           ...state,
           {
             id: state.id + 1,
-            firstName: action.firstName,
-            lastName: action.lastName,
-            email: action.email
+            firstName: action.payload.firstName,
+            lastName: action.payload.lastName,
+            email: action.payload.email
           }
         ]
   

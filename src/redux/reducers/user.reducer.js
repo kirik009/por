@@ -3,9 +3,9 @@ import {
     REG_USER,
   } from '../constants/ActionTypes'
 const iState = {
-  login:'',
-  password:'',
-isAuth: false
+  // login:'',
+  // password:'',
+  isAuth: false
 };
 
 export default function usersReducer(state = iState, action) {
@@ -20,9 +20,9 @@ export default function usersReducer(state = iState, action) {
               return    [
                 ...state,
                 {
-                 login: action.login,
-                  pass: action.pass,
-                  isAuth:true
+                //  login: action.login,
+                //   pass: action.pass,
+                  isAuth: action.isAuth
                 }
               ]
         
@@ -30,9 +30,9 @@ export default function usersReducer(state = iState, action) {
               return    [
                 ...state,
                 {
-                 login: action.login,
-                  pass: action.pass,
-                  isAuth: true
+                //  login: action.login,
+                //   pass: action.pass,
+                  isAuth: action.isAuth
                 }
               ]
           default:

@@ -5,7 +5,8 @@ import {Provider } from 'react-redux'
 import { BrowserRouter } from 'react-router-dom';
 import { AuthContext } from './context';
 import {useState} from 'react';
-import {store} from './redux/store'
+//import {store} from './redux/store'
+import {store} from './redux/reducers/rootReducer'
 function App() {
 
     const [isAuth, setIsAuth] = useState(false);

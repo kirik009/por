@@ -5,8 +5,8 @@ import { AuthContext } from '../context/index.js';
 import { useContext } from 'react';
 import { useSelector } from 'react-redux';
 const AppRouter = () => {
-   // const {isAuth} = useContext(AuthContext);
-    const isAuth = useSelector(state => state.userss)
+    const {isAuth} = useContext(AuthContext);
+    //const  isAuthen = useSelector(state => state.userss.isAuthen);
     return (
         isAuth
         ?
