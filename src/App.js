@@ -6,21 +6,22 @@ import { BrowserRouter } from 'react-router-dom';
 import { AuthContext } from './context';
 import {useState} from 'react';
 import rootReducer from './redux/reducers/rootReducer';
+import { Provider } from 'react-redux';
+import { store} from './redux/store';
 function App() {
-    const store = createStore(rootReducer)
     const [isAuth, setIsAuth] = useState(false);
     return (
-        <Provider store={store}>
       <AuthContext.Provider value = {{
             isAuth,
             setIsAuth
         }}>
+            <Provider store={store}>
         <BrowserRouter>
         <Navbar/>
         <AppRouter/>
         </BrowserRouter>
+        </Provider>
         </AuthContext.Provider>
-  </Provider>
       
     )
 }

@@ -2,11 +2,22 @@ import React, { Component } from 'react';
 import Table from '../components/Table';
 import Form from '../components/Form';
 
+
+// const dispatch = useDispatch()
+// const  authen = useSelector((state) => state.userss.isAuthen);
+// const navigate = useNavigate();
+// const auth = event => {
+//     event.preventDefault();
+//     dispatch(actions.loginUser())
+//     console.log(authen)
+//     navigate('/users')
+
+// }
 class users extends Component {
     state = {
         characters: []
     };
-
+   
     removeCharacter = id => {
         const { characters } = this.state;
     

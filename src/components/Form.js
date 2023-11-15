@@ -1,7 +1,12 @@
 import React, {Component} from 'react';
-import dataUsers from "./redux/reducers/dataUsers.reducer"
 class Form extends Component {
+    constructor(props) {
+        super(props);
+        
+        this.initialState = useSelector((state) => state.userss.chars);
 
+        this.state = this.initialState;
+    }
     handleChange = event => {
         const { name, value } = event.target;
 
@@ -15,8 +20,8 @@ class Form extends Component {
         event.preventDefault();
        if(!Object.values(this.state).includes('')){
             this.props.handleSubmit(this.state);
-            this.initialState.id++;
-            this.setState(this.initialState);
+            this.state.id++;
+            // this.setState(this.initialState);
        }
     }
 

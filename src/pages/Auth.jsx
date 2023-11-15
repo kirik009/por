@@ -2,17 +2,19 @@ import React , { useContext } from 'react'
 import MyButton from "../components/button/MyButton"
 import {Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/index.js';
+import { useDispatch, useSelector } from 'react-redux';
+import {actions} from '../redux/slices/userSlice';
 
 const Auth = () => {
-    const {isAuth, setIsAuth} = useContext(AuthContext)
-
+    const dispatch = useDispatch()
+    const  authen = useSelector((state) => state.userss.isAuthen);
     const navigate = useNavigate();
     const auth = event => {
         event.preventDefault();
-        setIsAuth(true);
+        dispatch(actions.loginUser())
+        console.log(authen)
         navigate('/users')
     }
-
     return (
         <div style={{textAlign: "center"}}>
             <h1 >Welcome!</h1>

@@ -2,14 +2,17 @@ import React , { useContext } from 'react'
 import MyButton from "../components/button/MyButton"
 import {Link, useNavigate} from 'react-router-dom';
 import { AuthContext } from '../context/index.js';
+import { useDispatch, useSelector } from 'react-redux';
+import {actions} from '../redux/slices/userSlice';
 
 const Registr = () => {
-
-    const {isAuth, setIsAuth} = useContext(AuthContext)
-    const navigate = useNavigate();
+    const dispatch = useDispatch()
+     const  authen = useSelector((state) => state.userss.characters);
+     const navigate = useNavigate();
     const Reg = event => {
         event.preventDefault();
-        setIsAuth(true);
+        dispatch(actions.regUser())
+        console.log(authen)
         navigate('/users')
     }
     return (
