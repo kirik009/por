@@ -12,16 +12,16 @@ import {
     };
   
   
-  export default function dataUsers(state = initialState, action) {
+  export default function dataUsersReducer(state = initialState, action) {
     switch (action.type) {
       case ADD_USER:
         return    [
           ...state,
           {
             id: state.id + 1,
-            firstName: action.firstName,
-            lastName: action.lastName,
-            email: action.email
+            firstName: action.payload.firstName,
+            lastName: action.payload.lastName,
+            email: action.payload.email
           }
         ]
   
