@@ -1,8 +1,5 @@
 import React, {Component} from 'react';
-<<<<<<< HEAD
-=======
 import dataUsers from "../redux/reducers/dataUsers.reducer"
->>>>>>> ca1fea5e244075c0dfa10552023ff55e0ebb8b9a
 class Form extends Component {
     constructor(props) {
         super(props);
