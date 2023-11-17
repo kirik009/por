@@ -1,6 +1,7 @@
 import React from 'react';
 
 const TableBody = props => { 
+    console.log(props.characterData)
     const rows = props.characterData.map((row, index) => {
         return (
             <tr key={index}>

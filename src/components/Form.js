@@ -4,8 +4,6 @@ class Form extends Component {
     constructor(props) {
         super(props);
         
-        this.initialState = useSelector((state) => state.userss.chars);
-
         this.state = this.initialState;
     }
     handleChange = event => {
@@ -22,7 +20,7 @@ class Form extends Component {
        if(!Object.values(this.state).includes('')){
             this.props.handleSubmit(this.state);
             this.state.id++;
-            // this.setState(this.initialState);
+            this.setState(this.initialState);
        }
     }
 

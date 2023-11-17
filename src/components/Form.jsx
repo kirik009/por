@@ -1,45 +1,56 @@
-import React, {Component} from 'react';
+import React, { useState } from 'react';
 
-const Form = () => {
-    handleChange = event => {
+const Form = (props) => {
+    const [state, setState] = useState({
+        id: 1,
+        firstName: '',
+        lastName: '',
+        email: ''
+    });
+
+   const handleChange = event => {
         const { name, value } = event.target;
-
-        this.setState({
+        setState({...state,
             [name] : value
         });
+        
     }
 
-    onFormSubmit = (event) => {
+    const onFormSubmit = (event) => {
         event.preventDefault();
-       if(!Object.values(this.state).includes('')){
-            this.props.handleSubmit(this.state);
-            this.state.id++;
-            this.setState(this.initialState);
+       if(!Object.values(state).includes('')){
+            props.handleSubmit(state);
+            setState({
+                id: state.id+1,
+                firstName: '',
+                lastName: '',
+                email: ''
+            });
        }
     }
 return (
-    <form onSubmit={this.onFormSubmit}>
+    <form onSubmit={onFormSubmit}>
         <label for="firstName">FirstName</label>
         <input 
             type="text" 
             name="firstName" 
             id="firstName"
-            value={firstName} 
-            onChange={this.handleChange} />
+            value={state.firstName} 
+            onChange={handleChange} />
         <label for="lastName">LastName</label>
         <input 
             type="text" 
             name="lastName" 
             id="lastName"
-            value={lastName} 
-            onChange={this.handleChange} />
+            value={state.lastName} 
+            onChange={handleChange} />
             <label for="email">Email</label>
         <input 
             type="text" 
             name="email" 
             id="email"
-            value={email} 
-            onChange={this.handleChange} />
+            value={state.email} 
+            onChange={handleChange} />
         <button type="submit">
             Add User
         </button>

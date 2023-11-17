@@ -1,6 +1,6 @@
 import React from 'react';
-import TableHeader from "../components/button/TableHeader"
-import TableBody from "../components/button/TableBody"
+import TableHeader from "../components/TableHeader"
+import TableBody from "../components/TableBody"
 const Table = (props) => {
     const { characterData, removeCharacter } = props;
         return (

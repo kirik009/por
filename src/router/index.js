@@ -1,4 +1,4 @@
-import users from "../pages/users.jsx"
+import users from "../pages/Users.jsx"
 import Auth from "../pages/Auth.jsx"
 import Registr from "../pages/Registr.jsx"
 
