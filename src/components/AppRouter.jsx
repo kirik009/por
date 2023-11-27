@@ -1,11 +1,11 @@
 import React from 'react'
 import {privateRoutes, publicRoutes} from "../router/index.js"
 import {Navigate, Route, Routes } from 'react-router-dom';
-import {AuthContext } from '../context/index.js';
-import {useContext } from 'react';
+import {Auth} from "../pages/Auth.jsx"
+import {Registr} from "../pages/Registr.jsx"
 import {useSelector } from 'react-redux';
-const AppRouter = () => {
-    const {isAuth} = useContext(AuthContext);
+const AppRouter = (props) => {
+    const {firstName, lastName, email} = props
     const  authen = useSelector((state) => state.userss.isAuthen);
     return (
         authen
@@ -14,11 +14,11 @@ const AppRouter = () => {
 {privateRoutes.map(route => 
     <Route 
      path ={route.path}
-     element={<route.element />} 
+     element={<route.element firstName={firstName} lastName={lastName} email={email}/>} 
      key={route.path}
      />
 )}
-                <Route path="/" element={<Navigate to="/users" />} />
+                <Route path="/" element={<Navigate replace to="/users/:firstName/:lastName/:email" />} />
                 </Routes>
         
         :

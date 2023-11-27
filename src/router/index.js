@@ -1,4 +1,4 @@
-import users from "../pages/Users.jsx"
+import Users from "../pages/Users.jsx"
 import Auth from "../pages/Auth.jsx"
 import Registr from "../pages/Registr.jsx"
 
@@ -7,8 +7,8 @@ export const publicRoutes = [
     {path: '/registr', element: Registr}
 ]
 export const privateRoutes = [
- 
-    {path: '/users', element: users}
+    {path: '/registr', element: Registr},
+    {path: '/users/:firstName/:lastName/:email', element: Users}
 ]
 
 
