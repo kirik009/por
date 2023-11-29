@@ -8,7 +8,8 @@ export const publicRoutes = [
 ]
 export const privateRoutes = [
     {path: '/registr', element: Registr},
-    {path: '/users/:firstName/:lastName/:email', element: Users}
+    {path: '/auth', element: Auth},
+    {path: '/users/:username', element: Users}
 ]
 
 

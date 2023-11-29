@@ -27,6 +27,9 @@ const Form = (props) => {
                 email: ''
             });
        }
+       else {
+        alert('Есть пустое поле, исправьте пожолуйста')
+       }
     }
 return (
     <form onSubmit={onFormSubmit}>

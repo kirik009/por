@@ -5,7 +5,7 @@ import {Auth} from "../pages/Auth.jsx"
 import {Registr} from "../pages/Registr.jsx"
 import {useSelector } from 'react-redux';
 const AppRouter = (props) => {
-    const {firstName, lastName, email} = props
+    const {username} = props
     const  authen = useSelector((state) => state.userss.isAuthen);
     return (
         authen
@@ -14,11 +14,11 @@ const AppRouter = (props) => {
 {privateRoutes.map(route => 
     <Route 
      path ={route.path}
-     element={<route.element firstName={firstName} lastName={lastName} email={email}/>} 
+     element={<route.element username={username}/>} 
      key={route.path}
      />
 )}
-                <Route path="/" element={<Navigate replace to="/users/:firstName/:lastName/:email" />} />
+                <Route path="/" element={<Navigate replace to="/users/:username" />} />
                 </Routes>
         
         :
@@ -33,8 +33,6 @@ const AppRouter = (props) => {
         )}
         <Route path="/" element={<Navigate replace to="/auth" />} />
         </Routes>
-        
-        
     )
 }
 

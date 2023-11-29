@@ -7,29 +7,30 @@ import {Link, useNavigate, useParams } from 'react-router-dom';
 
 const Users = () => {
     const dispatch = useDispatch()
-    const  authen = useSelector((state) => state.userss.characters);
-    const [state, setState] = useState({
-        authen
-    });
+    let  authen = useSelector((state) => state.userss.characters);
+    // const [state, setState] = useState({
+    //     authen
+    // });
 
 const removeCharacter = id => {
-    const { authen } = state;
+    // const { authen } = state;
     
-    setState({
-            authen: authen.filter((character, i) => { return i !== id;
-        })
-    });
+    // setState({
+    //         authen: authen.filter((character, i) => { return i !== id;
+    //     })
+    // });
+    dispatch(actions.deleteUser(id))
 }
 
 const handleSubmit = character => {
-    setState({authen: [...state.authen, character]});
+    authen.push(character);
 }
 
 return (
     <div className="container">
         <h1>Users</h1>
         <Table
-            characterData={state.authen}
+            characterData={authen}
             removeCharacter={removeCharacter}
         />
         <Form handleSubmit={handleSubmit} />
