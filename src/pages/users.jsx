@@ -1,38 +1,48 @@
-import React, { useState } from 'react';
+import React, { cloneElement, useEffect, Children, useState } from 'react';
 import Table from '../components/Table.jsx';
 import Form from '../components/Form.jsx';
 import { useDispatch, useSelector } from 'react-redux';
 import {actions} from '../redux/slices/userSlice.js';
 import {Link, useNavigate, useParams } from 'react-router-dom';
 
+
+
 const Users = () => {
     const dispatch = useDispatch()
     let  authen = useSelector((state) => state.userss.characters);
-    // const [state, setState] = useState({
-    //     authen
-    // });
-
 const removeCharacter = id => {
-    // const { authen } = state;
-    
-    // setState({
-    //         authen: authen.filter((character, i) => { return i !== id;
-    //     })
-    // });
     dispatch(actions.deleteUser(id))
+    console.log(authen)
 }
 
 const handleSubmit = character => {
-    authen.push(character);
+    dispatch(actions.addUser(character)) 
+   console.log(authen)
 }
 
+useEffect(() => {
+    fetch("https://jsonplaceholder.typicode.com/users")
+    .then(res => {
+        return res.json();
+    })
+    .then ((data) => {
+        console.log(data[1]["name"]);
+        for(let i = 0; i< data.length; i++)
+        {dispatch(actions.addUser({id:data[i]["id"],firstName: data[i]["name"],lastName: data[i]["username"],email: data[i]["email"] })) }
+        
+    }
+    )
+}, [])
+
 return (
-    <div className="container">
+    <div >
         <h1>Users</h1>
-        <Table
-            characterData={authen}
-            removeCharacter={removeCharacter}
-        />
+        
+      {authen && <Table
+          characterData={authen}
+          removeCharacter={removeCharacter}
+      />}
+       
         <Form handleSubmit={handleSubmit} />
     </div>
 );

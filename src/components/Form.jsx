@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 
 const Form = (props) => {
+    let  authen = useSelector((state) => state.userss.characters);
     const [state, setState] = useState({
         id: 1,
         firstName: '',

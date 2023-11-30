@@ -1,20 +1,21 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { useNavigate } from "react-router-dom";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 const initialState = {
-   characters : [{
-        id: 1,
-        firstName: '',
-        lastName: '',
-        email: ''
-   }
+   characters : [
+  //   {
+  //       id: 1,
+  //       firstName: '',
+  //       lastName: '',
+  //       email: ''
+  //  }
    ],
-   users : [{
+   users : [
+    {
     id: 1,
     username: '',
     password: ''
 }
 ],
-    isAuthen: false
+    isAuthen: false,
 }
 
 function isPass (char, user, pass){
@@ -55,24 +56,19 @@ function isEm (char, first){
 }
 return false
 }
-// const removeCharacter = id => {
-//   const { authen } = state;
-  
-//   setState({
-//           authen: authen.filter((character, i) => { return i !== id;
-//       })
-//   });
-// }
+
 const userSlice = createSlice({
     name: 'userss',
     initialState,
     reducers : {
       addUser (state, action) {
-
-        },
-      deleteUser (state, action) {
-        
-        state.characters = state.characters.filter((character, i) => { return i !== action;
+        if(state.characters.length ===0)
+        {action.payload.id = 1
+        }else{action.payload.id = Object.values(state.characters).at(-1).id + 1}
+      state.characters.push(action.payload)
+      },
+      deleteUser (state, action) {   
+        state.characters = state.characters.filter((character, i) => { return i !== action.payload;
         })},
       regUser (state, action) {
         if(
@@ -88,8 +84,8 @@ const userSlice = createSlice({
       loginUser (state) {
          state.isAuthen = true
         },
-    exUser (state) {
-        state.isAuthen = false}
+    // exUser (state) {
+    //     state.isAuthen = false}
     
 }})
 

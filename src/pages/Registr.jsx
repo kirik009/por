@@ -7,8 +7,7 @@ import {actions, isUn} from '../redux/slices/userSlice';
 const Registr = () => {
     const chars = useSelector((state) => state.userss.characters);
     const  users = useSelector((state) => state.userss.users);
-    console.log(Object.values(chars))
-    const maxId = Object.values(chars).at(-1).id
+    const maxId = Object.values(users).at(-1).id
     const dispatch = useDispatch()
     const navigate = useNavigate();
     const Reg = event => {
