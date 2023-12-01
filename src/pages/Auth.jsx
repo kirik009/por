@@ -12,6 +12,7 @@ const Auth = () => {
     const auth = event => {
         let user = document.getElementById('elemm1').value
         let pass = document.getElementById('elemm2').value
+       
         event.preventDefault();
         if(isUn(users, user))
         {
@@ -20,7 +21,7 @@ const Auth = () => {
             {dispatch(actions.loginUser())
     navigate('/users/' + user)}} else {alert("Вы ввели неправильный пароль")}
     }
-    else {alert("Такого польователя нет")
+    else {alert("Такого пользователя нет")
 }
 }
     return (

@@ -84,8 +84,8 @@ const userSlice = createSlice({
       loginUser (state) {
          state.isAuthen = true
         },
-    // exUser (state) {
-    //     state.isAuthen = false}
+    exUser (state) {
+        state.isAuthen = false}
     
 }})
 
