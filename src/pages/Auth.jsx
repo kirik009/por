@@ -1,15 +1,18 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import MyButton from "../components/button/MyButton"
 import {Link, useNavigate } from 'react-router-dom';
 import {useDispatch, useSelector } from 'react-redux';
 import {actions, isPass, isUn} from '../redux/slices/userSlice';
+import Cookies from 'js-cookie';
 
 const Auth = () => {
+
     const dispatch = useDispatch()
-    const  authen = useSelector((state) => state.userss.isAuthen);
     const  users = useSelector((state) => state.userss.users);
     const navigate = useNavigate();
     const auth = event => {
+        console.log(Cookies.get('au'))
+        //localStorage.clear()
         let user = document.getElementById('elemm1').value
         let pass = document.getElementById('elemm2').value
         event.preventDefault();
@@ -19,8 +22,9 @@ const Auth = () => {
           {
             {dispatch(actions.loginUser())
     navigate('/users/' + user)}} else {alert("Вы ввели неправильный пароль")}
-    }
-    else {alert("Такого польователя нет")
+   
+}
+    else {alert("Такого пользователя нет")
 }
 }
     return (

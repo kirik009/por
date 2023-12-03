@@ -4,15 +4,19 @@ import Form from '../components/Form.jsx';
 import { useDispatch, useSelector } from 'react-redux';
 import {actions} from '../redux/slices/userSlice.js';
 import {Link, useNavigate, useParams } from 'react-router-dom';
+import Cookies from 'js-cookie';
 
 
 
 const Users = () => {
     const dispatch = useDispatch()
     let  authen = useSelector((state) => state.userss.characters);
+    
+      
 const removeCharacter = id => {
     dispatch(actions.deleteUser(id))
     console.log(authen)
+   console.log(Cookies)
 }
 
 const handleSubmit = character => {

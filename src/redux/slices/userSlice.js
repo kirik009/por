@@ -1,21 +1,19 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
+import Cookies from "js-cookie";
+
+let r= []
+for(let i=1;i<=localStorage.length; i++){
+  r.push(JSON.parse(localStorage.getItem(`users${i}`)))
+}
+
 const initialState = {
    characters : [
-  //   {
-  //       id: 1,
-  //       firstName: '',
-  //       lastName: '',
-  //       email: ''
-  //  }
    ],
-   users : [
-    {
-    id: 1,
-    username: '',
-    password: ''
-}
-],
-    isAuthen: false,
+   users : 
+  r
+   
+,
+    isAuthen: Cookies.get('au'),
 }
 
 function isPass (char, user, pass){
@@ -28,11 +26,17 @@ function isPass (char, user, pass){
 return false
 }
 function isUn (char, first){
+  if(char.length===0){ return false}
+ 
+else
+{
   for (let l = 0; l < char.length; l++) {
     if(char[l].username === first)
   return true
 }
 return false
+}
+  
 }
 function isfn (char, first){
   for (let l = 0; l < char.length; l++) {
@@ -71,21 +75,31 @@ const userSlice = createSlice({
         state.characters = state.characters.filter((character, i) => { return i !== action.payload;
         })},
       regUser (state, action) {
-        if(
-        isUn(state.users, action.payload.username)) 
-        {alert("Регистрация нового пользователся не проходит, вы используете уже существующий username")
-        } else {
-          if(Object.values(state.users).at(-1).id === 1) {
-            state.users.pop()
-            state.users.push(action.payload)
-          } else
-          state.users.push(action.payload)}
-    },
-      loginUser (state) {
-         state.isAuthen = true
+          if(
+            isUn(state.users, action.payload.username)) 
+            {alert("Регистрация нового пользователся не проходит, вы используете уже существующий username")
+            } else {
+              
+                state.users.push(action.payload)
+                localStorage.setItem(`users${action.payload.id}`, JSON.stringify(action.payload))
+             
+             }
         },
-    // exUser (state) {
-    //     state.isAuthen = false}
+    regUserCoo (state, action) {
+      for(let i =0; i < action.payload.length; i++){
+        state.users.push(action.payload[i])
+      }    
+           
+  },
+      loginUser (state) {
+         state.isAuthen = 'true'
+         Cookies.set('au', 'true', { expires: 7 });
+        },
+    exUser (state) {
+        state.isAuthen = 'false'
+       Cookies.set('au', 'false', { expires: 7 });
+      },
+     
     
 }})
 

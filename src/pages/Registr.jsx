@@ -1,16 +1,21 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import MyButton from "../components/button/MyButton"
 import {useNavigate} from 'react-router-dom';
 import {useDispatch, useSelector } from 'react-redux';
 import {actions, isUn} from '../redux/slices/userSlice';
 
 const Registr = () => {
-    const chars = useSelector((state) => state.userss.characters);
+
     const  users = useSelector((state) => state.userss.users);
-    const maxId = Object.values(users).at(-1).id
+    let maxId = 1
+    if(users.length===0){
+         maxId =1
+    } else{  maxId = users.length + 1 }
+    
     const dispatch = useDispatch()
     const navigate = useNavigate();
-    const Reg = event => {
+    const Reg = event => { 
+       
         event.preventDefault();
         let user = document.getElementById('elem1').value
         let pass = document.getElementById('elem2').value
@@ -19,7 +24,10 @@ const Registr = () => {
     }
         else
         {dispatch(actions.regUser({id: maxId, username: user, password: pass}))
-    navigate('/auth')}
+        navigate('/auth')
+        }
+        
+    
 }
     return (
         <div style={{textAlign: "center"}}>

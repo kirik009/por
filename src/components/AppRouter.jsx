@@ -4,11 +4,17 @@ import {Navigate, Route, Routes } from 'react-router-dom';
 import {Auth} from "../pages/Auth.jsx"
 import {Registr} from "../pages/Registr.jsx"
 import {useSelector } from 'react-redux';
+import jsCookie from 'js-cookie';
+import Cookies from 'js-cookie';
 const AppRouter = (props) => {
     const {username} = props
     const  authen = useSelector((state) => state.userss.isAuthen);
+ let authe = false
+    if(authen === 'true'){authe = true}
+    
+else{authe = false}
     return (
-        authen
+        authe
         ?
     <Routes>
 {privateRoutes.map(route => 
