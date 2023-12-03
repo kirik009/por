@@ -31,6 +31,6 @@ else{authe = false}
             </div>
         </div>
     )
-}
-
+    
+            }
 export default Navbar

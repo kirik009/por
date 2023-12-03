@@ -15,6 +15,7 @@ const Auth = () => {
         //localStorage.clear()
         let user = document.getElementById('elemm1').value
         let pass = document.getElementById('elemm2').value
+       
         event.preventDefault();
         if(isUn(users, user))
         {
