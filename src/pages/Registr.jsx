@@ -1,8 +1,9 @@
 import React, {useEffect} from 'react'
 import MyButton from "../components/button/MyButton"
-import {useNavigate} from 'react-router-dom';
+import {BrowserRouter, Link, useNavigate} from 'react-router-dom';
 import {useDispatch, useSelector } from 'react-redux';
 import {actions, isUn} from '../redux/slices/userSlice';
+import Navbar from '../components/navbar';
 
 const Registr = () => {
 
@@ -14,8 +15,12 @@ const Registr = () => {
     
     const dispatch = useDispatch()
     const navigate = useNavigate();
+    const authen = useSelector((state) => state.userss.isAuthen);
+        let authe = false
+        if(authen === 'true'){authe = true}
+        else{authe = false}
     const Reg = event => { 
-       
+        
         event.preventDefault();
         let user = document.getElementById('elem1').value
         let pass = document.getElementById('elem2').value
@@ -30,12 +35,40 @@ const Registr = () => {
     
 }
     return (
+            authe
+            ?
+            <div>
+            <div className='navbar'>
+                <div className='navbar_links'>
+                    <Link to='/users'>Пользователи</Link>
+                    <Link to='/auth' onClick={() => dispatch(actions.exUser())
+                    } >Выйти</Link>
+                </div>
+            </div>
+            <div style={{textAlign: "center"}}>
+            <form onSubmit={Reg}>
+                <input id="elem1" type="text" placeholder="Username"></input>
+                <input id="elem2" type="password" placeholder="Password"></input>
+                <MyButton>Registry</MyButton>        
+            </form>
+            </div>
+            </div>
+            :
+            <div>
+            <div className='navbar'>
+                <div className='navbar_links'>
+                    <Link to='/users'>Пользователи</Link>
+                    <Link to='/auth' 
+                    >Войти</Link>
+                </div>
+            </div>
         <div style={{textAlign: "center"}}>
             <form onSubmit={Reg}>
                 <input id="elem1" type="text" placeholder="Username"></input>
                 <input id="elem2" type="password" placeholder="Password"></input>
                 <MyButton>Registry</MyButton>        
             </form>
+        </div>
         </div>
     )
 }

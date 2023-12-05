@@ -13,7 +13,7 @@ function App() {
      
             <Provider store={store}>
         <BrowserRouter>
-        <Navbar/>
+        
         <AppRouter/>
         </BrowserRouter>
         </Provider>
