@@ -22,13 +22,16 @@ const Auth = () => {
           if(isPass(users, user, pass))
           {
             {dispatch(actions.loginUser())
-    navigate('/users/' + user)}} else {alert("Вы ввели неправильный пароль")}
+    navigate('/users/' + user)}
+    Cookies.set('curr', user, { expires: 7 });
+} else {alert("Вы ввели неправильный пароль")}
    
 }
     else {alert("Такого пользователя нет")
 }
 }
     return (
+        
         <div style={{textAlign: "center"}}>
             <h1 >Welcome!</h1>
             <p >Login to get started</p>
@@ -41,6 +44,7 @@ const Auth = () => {
              First time here?<Link class="myLink" to='/registr' >Create your account</Link>
             </div>
         </div>
+        
     )
 }
 

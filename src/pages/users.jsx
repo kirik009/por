@@ -39,7 +39,13 @@ useEffect(() => {
 }, [])
 
 return (
-    
+    <div>
+        <div className='navbar'>
+                <div className='navbar_links'>
+                    <Link to='/auth' onClick={() => dispatch(actions.exUser())
+                    } >Выйти</Link>
+                </div>
+            </div>
     <div >
         <h1>Users</h1>
         
@@ -49,6 +55,7 @@ return (
       />}
        
         <Form handleSubmit={handleSubmit} />
+    </div>
     </div>
 );
 }

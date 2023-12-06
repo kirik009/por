@@ -13,6 +13,7 @@ const AppRouter = (props) => {
     if(authen === 'true'){authe = true}
     
 else{authe = false}
+const aut = Cookies.get('curr');
     return (
         authe
         ?
@@ -20,11 +21,11 @@ else{authe = false}
 {privateRoutes.map(route => 
     <Route 
      path ={route.path}
-     element={<route.element username={username}/>} 
+     element={<route.element/>} 
      key={route.path}
      />
 )}
-                <Route path="/" element={<Navigate replace to="/users/:username" />} />
+                <Route path="*" element={<Navigate replace to={`/users/${aut}`} />} />
                 </Routes>
         
         :
@@ -37,7 +38,7 @@ else{authe = false}
              key={route.path}
              />
         )}
-        <Route path="/" element={<Navigate replace to="/auth" />} />
+        <Route path="*" element={<Navigate replace to="/auth" />} />
         </Routes>
     )
 }
