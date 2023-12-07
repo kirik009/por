@@ -7,7 +7,6 @@ export const publicRoutes = [
     {path: '/registr', element: Registr}
 ]
 export const privateRoutes = [
-    {path: '/registr', element: Registr},
     {path: '/auth', element: Auth},
     {path: '/users/:username', element: Users}
 ]
