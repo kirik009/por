@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useContext, useEffect } from 'react'
 import MyButton from "../components/button/MyButton"
 import {Link, useNavigate } from 'react-router-dom';
 import {useDispatch, useSelector } from 'react-redux';
@@ -6,7 +6,13 @@ import {actions, isPass, isUn} from '../redux/slices/userSlice';
 import Cookies from 'js-cookie';
 
 const Auth = () => {
+    const {authh} = useContext(Context)
 
+    const login = () => {
+        const provider = new firebase.auth.GoogleAuthProvider(
+           // const {user}
+        )
+    }
     const dispatch = useDispatch()
     const  users = useSelector((state) => state.userss.users);
     const navigate = useNavigate();
