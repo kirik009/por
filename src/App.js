@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import Navbar from './components/navbar'
 import AppRouter from './components/AppRouter'
 import {Provider, useDispatch, useSelector } from 'react-redux'
@@ -6,9 +6,12 @@ import { BrowserRouter } from 'react-router-dom';
 import {useState} from 'react';
 import { store} from './redux/store';
 import { actions } from './redux/slices/userSlice';
+import { Context } from '.';
+//import useAuth
 function App() {
    
-    const [isAuth, setIsAuth] = useState(false);
+   const {auth} = useContext(Context)
+   //const {user} = useAuthS
     return (
      
             <Provider store={store}>

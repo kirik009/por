@@ -2,7 +2,9 @@ import React, { createContext } from 'react';
 import ReactDOM from 'react-dom';
 import App from "./App"
 import './index.css';
-import firebase from 'firebase'
+import firebase from 'firebase/compat/app';
+import 'firebase/compat/auth';
+import 'firebase/compat/firestore';
 
 
   firebase.initializeApp({
@@ -16,12 +18,12 @@ import firebase from 'firebase'
   });
 
   export const Context = createContext(null)
-  const auth = firebase.auth()
+  const authh = firebase.auth()
   const firestore = firebase.firestore()
 ReactDOM.render(
   <Context.Provider value={{
     firebase,
-    auth,
+    authh,
     firestore
   }}>
 <App />

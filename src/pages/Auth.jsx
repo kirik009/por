@@ -4,18 +4,24 @@ import {Link, useNavigate } from 'react-router-dom';
 import {useDispatch, useSelector } from 'react-redux';
 import {actions, isPass, isUn} from '../redux/slices/userSlice';
 import Cookies from 'js-cookie';
+import { Context } from '..';
+import firebase from 'firebase/compat/app';
+import 'firebase/compat/auth';
+import 'firebase/compat/firestore';
 
 const Auth = () => {
     const {authh} = useContext(Context)
-
-    const login = () => {
-        const provider = new firebase.auth.GoogleAuthProvider(
-           // const {user}
-        )
-    }
+    const navigate = useNavigate();
     const dispatch = useDispatch()
     const  users = useSelector((state) => state.userss.users);
-    const navigate = useNavigate();
+    const login = async () => {
+        const provider = new firebase.auth.GoogleAuthProvider()
+            const {user} = await authh.signInWithPopup(provider)
+            navigate('/users')
+        
+    }
+   
+ 
     const auth = event => {
         console.log(Cookies.get('au'))
         //localStorage.clear()
@@ -46,6 +52,8 @@ const Auth = () => {
                 <input id="elemm2" type="password" placeholder="Password"/>
                 <MyButton>Login</MyButton>
             </form>
+        
+            <button onClick = {login}>Login with google</button>
             <div class="myDiv">
              First time here?<Link class="myLink" to='/registr' >Create your account</Link>
             </div>
