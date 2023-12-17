@@ -34,7 +34,8 @@ if(authe){ return (
                 </Routes>)}
    
 
-        else if(user) {return (
+        else if(user) {
+            return (
 
         
         
@@ -58,9 +59,35 @@ if(authe){ return (
                  />
             )}
             <Route path="*" element={<Navigate replace to="/auth" />} />
-            </Routes>)}
+            </Routes>)
+            }
+        }
+//  return (
+//         authe ?
+//     <Routes>
+// {privateRoutes.map(route => 
+//     <Route 
+//      path ={route.path}
+//      element={<route.element/>} 
+//      key={route.path}
+//      />
+// )}
+//                 <Route path="*" element={<Navigate replace to={`/users/${aut}`} />} />
+//                 </Routes>
+   
         
-    
-}
+//         :
+//         <Routes>
+//             {publicRoutes.map(route => 
+//                 <Route 
+//                  path ={route.path}
+//                  element={<route.element />} 
+//                  key={route.path}
+//                  />
+//             )}
+//             <Route path="*" element={<Navigate replace to="/auth" />} />
+//             </Routes>
+//               )
+//             }
 
 export default AppRouter;

@@ -1,5 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import Cookies from "js-cookie";
+import { useContext } from "react";
+import { Context } from "../..";
 
 let r= []
 for(let i=1;i<=localStorage.length; i++){
@@ -70,10 +72,11 @@ const userSlice = createSlice({
         {action.payload.id = 1
         }else{action.payload.id = Object.values(state.characters).at(-1).id + 1}
       state.characters.push(action.payload)
+      
       },
       deleteUser (state, action) {   
-        state.characters = state.characters.filter((character, i) => { return i !== action.payload;
-        })},
+        state.characters = state.characters.filter((character, i) => { return i !== action.payload;})
+      },
       regUser (state, action) {
           if(
             isUn(state.users, action.payload.username)) 
