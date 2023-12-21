@@ -7,30 +7,36 @@ import {Link, useNavigate, useParams } from 'react-router-dom';
 import Cookies from 'js-cookie';
 import { Context } from '../index.js';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { doc, deleteDoc, setDoc, getFirestore } from "firebase/firestore";
+import { doc, deleteDoc, setDoc, getFirestore, query, collection } from "firebase/firestore";
 
 
 const Users = () => {
     const dispatch = useDispatch()
     let  authen = useSelector((state) => state.userss.characters);
-   // const {auth} = useContext(Context)
     const {auth, firestore} = useContext(Context)
 const  removeCharacter =  (id) => {
+
     dispatch(actions.deleteUser(id))
-
-    firestore.collection("chars").where("id", "==", id+1).get()
-    .then(querySnapshot => {
-        querySnapshot.docs[0].ref.delete();
-    });
-    let i = 0
-    while(i < querySnapshot.docs.length){
+    let mass = []
+    //firestore.collection("chars").where("id", "==", id).get()
+    // .then(querySnapshot => {
+    //     querySnapshot.docs[0].ref.delete();
+    //     mass = querySnapshot.docs
+    //    // mass.push(querySnapshot.docs)
+    // });
+    // let i = 0
+    // const docRef = doc(getFirestore(), firestore.collection("chars"), idd)
+    // while(i < mass.length){
         
-        const docRef = doc(getFirestore(), firestore.collection("chars"))
-        setDoc(docRef, )
-        i++;
-    }
+       
+    //     setDoc(docRef, mass[i])
+    //     i++;
+    // }
+    const CollectionRef = firestore.collection("chars")
+    const q = query(CollectionRef, where("id", "==", id + 1))
+    
    
-
+}
 const handleSubmit = character => {
     dispatch(actions.addUser(character)) 
     firestore.collection('chars').add(character)
@@ -55,16 +61,18 @@ useEffect(() => {
 const handleClick = () => {
     if(auth === undefined)
     dispatch(actions.exUser())
-    else
-    auth.signOut()
+    else{
+        console.log(auth)
+        auth.signOut()
+    }
+    
 }
 
     return (
     <div>
         <div className='navbar'>
                 <div className='navbar_links'>
-                    <Link to='/auth' onClick={handleClick
-                    } >Выйти</Link>
+                    <Link to='/auth' onClick={handleClick} >Выйти</Link>
                 </div>
             </div>
     <div >
@@ -80,5 +88,5 @@ const handleClick = () => {
     </div>
 );
       }
-}
+
 export default Users

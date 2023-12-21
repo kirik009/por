@@ -18,10 +18,7 @@ const AppRouter = (props) => {
     
 else{authe = false}
 const aut = Cookies.get('curr');
-if(authe){ return (
-
-        
-        
+if(authe){ return (       
     <Routes>
 {privateRoutes.map(route => 
     <Route 
@@ -34,7 +31,8 @@ if(authe){ return (
                 </Routes>)}
    
 
-        else if(user) {
+        else
+         if(user) {
             return (
 
         

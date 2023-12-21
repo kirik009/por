@@ -17,8 +17,6 @@ const Registr = () => {
     
     const dispatch = useDispatch()
     const navigate = useNavigate();
-    const authen = useSelector((state) => state.userss.isAuthen);
-        const aut = Cookies.get('curr');
         
     const Reg = event => { 
         
