@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import Cookies from "js-cookie";
 import { useContext } from "react";
 import { Context } from "../..";
+import { getFirestore } from "firebase/firestore";
 
 let r= []
 for(let i=1;i<=localStorage.length; i++){
@@ -68,6 +69,7 @@ const userSlice = createSlice({
     initialState,
     reducers : {
       addUser (state, action) {
+        
         if(state.characters.length ===0)
         {action.payload.id = 1
         }else{action.payload.id = Object.values(state.characters).at(-1).id + 1}
