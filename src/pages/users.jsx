@@ -15,8 +15,8 @@ const Users = () => {
     let ids = []
     const dispatch = useDispatch()
     let  authen = useSelector((state) => state.userss.characters);
-    const {auth} = useContext(Context)
-    const {authhh, firestore} = useContext(Context)
+   // const {auth} = useContext(Context)
+    const {auth, firestore} = useContext(Context)
 const  removeCharacter =  (id) => {
     dispatch(actions.deleteUser(id))
    console.log(id)
@@ -89,6 +89,6 @@ const handleClick = () => {
     </div>
     </div>
 );
+      }
 
-}
 export default Users

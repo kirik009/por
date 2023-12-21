@@ -1,13 +1,14 @@
-import React, {useEffect} from 'react'
+import React, {useContext, useEffect} from 'react'
 import MyButton from "../components/button/MyButton"
 import {BrowserRouter, Link, useNavigate} from 'react-router-dom';
 import {useDispatch, useSelector } from 'react-redux';
 import {actions, isUn} from '../redux/slices/userSlice';
 import Navbar from '../components/navbar';
 import Cookies from 'js-cookie';
+import { Context } from '..';
 
 const Registr = () => {
-
+    const {auth, firestore} = useContext(Context)
     const  users = useSelector((state) => state.userss.users);
     let maxId = 1
     if(users.length===0){
@@ -29,6 +30,7 @@ const Registr = () => {
     }
         else
         {dispatch(actions.regUser({id: maxId, username: user, password: pass}))
+        firestore.collection('userss').add({id: maxId, username: user, password: pass})
         navigate('/auth')
         }
         
