@@ -10,7 +10,7 @@ import {useAuthState} from "react-firebase-hooks/auth"
 
 const AppRouter = (props) => {
     const {authh}= useContext(Context)
-    const [user] = useAuthState(authh)
+    //const [user] = useAuthState(authh)
     const {username} = props
     const  authen = useSelector((state) => state.userss.isAuthen);
  let authe = false

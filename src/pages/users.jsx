@@ -11,6 +11,8 @@ import { doc, deleteDoc, setDoc, getFirestore, query, collection } from "firebas
 
 
 const Users = () => {
+    let chars = []
+    let ids = []
     const dispatch = useDispatch()
     let  authen = useSelector((state) => state.userss.characters);
     const {auth, firestore} = useContext(Context)
@@ -43,7 +45,7 @@ const handleSubmit = character => {
 }
 
 useEffect(() => {
-    //let chars = []
+   // let chars = []
     fetch("https://jsonplaceholder.typicode.com/users")
     .then(res => {
         return res.json();
@@ -52,8 +54,8 @@ useEffect(() => {
         console.log(data[1]["name"]);
         for(let i = 0; i< data.length; i++)
         {
-            dispatch(actions.addUser({id:data[i]["id"],firstName: data[i]["name"],lastName: data[i]["username"],email: data[i]["email"] })) 
-       // chars.push({id:data[i]["id"],firstName: data[i]["name"],lastName: data[i]["username"],email: data[i]["email"] })
+            //dispatch(actions.addUser({id:data[i]["id"],firstName: data[i]["name"],lastName: data[i]["username"],email: data[i]["email"] })) 
+        chars.push({id:data[i]["id"],firstName: data[i]["name"],lastName: data[i]["username"],email: data[i]["email"] })
     }  
     }
     )
