@@ -8,7 +8,6 @@ import Cookies from 'js-cookie';
 import { Context } from '..';
 
 const Registr = () => {
-    const {auth, firestore} = useContext(Context)
     const  users = useSelector((state) => state.userss.users);
     let maxId = 1
     if(users.length===0){
@@ -28,7 +27,6 @@ const Registr = () => {
     }
         else
         {dispatch(actions.regUser({id: maxId, username: user, password: pass}))
-        firestore.collection('userss').add({id: maxId, username: user, password: pass})
         navigate('/auth')
         }
         

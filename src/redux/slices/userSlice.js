@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import Cookies from "js-cookie";
 import { useContext } from "react";
 import { Context } from "../..";
-import { getFirestore } from "firebase/firestore";
+import { collection, deleteDoc, doc, getDocs, getFirestore, onSnapshot, query, updateDoc, where } from "firebase/firestore";
 
 let r= []
 for(let i=1;i<=localStorage.length; i++){
@@ -10,8 +10,9 @@ for(let i=1;i<=localStorage.length; i++){
 }
 
 const initialState = {
-   characters : [
-   ],
+   characters :
+   []
+   ,
    users : 
   r
    
@@ -68,16 +69,17 @@ const userSlice = createSlice({
     name: 'userss',
     initialState,
     reducers : {
-      addUser (state, action) {
+       addUser (state, action)  {
         
         if(state.characters.length ===0)
         {action.payload.id = 1
         }else{action.payload.id = Object.values(state.characters).at(-1).id + 1}
       state.characters.push(action.payload)
-      
+           
       },
-      deleteUser (state, action) {   
+       deleteUser (state, action) {   
         state.characters = state.characters.filter((character, i) => { return i !== action.payload;})
+      
       },
       regUser (state, action) {
           if(
@@ -90,12 +92,6 @@ const userSlice = createSlice({
              
              }
         },
-    regUserCoo (state, action) {
-      for(let i =0; i < action.payload.length; i++){
-        state.users.push(action.payload[i])
-      }    
-           
-  },
       loginUser (state) {
          state.isAuthen = 'true'
          Cookies.set('au', 'true', { expires: 7 });
