@@ -3,8 +3,8 @@
     width: 100%;
     height: 100%;
   }
-   
   
+
   .flickity-button {
     position: absolute;
     background: hsla(0, 0%, 100%, 0.75);
@@ -30,7 +30,6 @@
     opacity: 0.3;
     cursor: auto;
    
-    pointer-events: none;
   }
   
   .flickity-button-icon {
@@ -77,3 +76,11 @@
     width: 100%;
     align-items: self-start;
    } 
+
+   .crsl{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    width: 100%;
+    align-items: self-start;
+   }
